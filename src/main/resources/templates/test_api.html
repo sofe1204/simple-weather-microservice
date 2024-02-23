@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality API Demo</title>
+</head>
+<body>
+
+<h1>Air Quality Information</h1>
+
+<div id="result"></div>
+
+<script>
+    const apiKey = 'AIzaSyCm63i6Yt7smbBdTANVTHmYVTtD59L1O-4'; // Replace with your actual API key
+
+    const apiUrl = `https://airquality.googleapis.com/v1/currentConditions:lookup?key=${apiKey}`;
+
+    // Fetch air quality data
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the data - Update the UI or perform other actions
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+</script>
+
+</body>
+</html>

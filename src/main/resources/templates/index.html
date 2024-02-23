@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>const searchWeather = async (cityName) => {
+        try {
+            const response = await fetch(`http://localhost:5522/api/weather/search?name=${cityName}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch weather data for ${cityName}`);
+            }
+            const weatherData = await response.json();
+            // Handle weatherData in your React component
+            console.log(weatherData);
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+
+    searchWeather("Skopje");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
