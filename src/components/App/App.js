@@ -18,8 +18,16 @@ class App extends Component {
 
 
   render() {
+    
+    const appStyle = {
+     
+      background: '#f0f0f0', 
+      minHeight: '100vh', 
+      padding: '20px', 
+    };
+
     return (
-      <div>
+      <div style={appStyle}>
         <Weather cities={this.state.cities} fetchData={this.loadCities} />
       </div>
     );
