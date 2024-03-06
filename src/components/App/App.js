@@ -1,12 +1,12 @@
 import './App.css';
 import React, {Component} from "react";
-//import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import '../Weather/Weather'
 import Weather from '../Weather/Weather';
 import {useState} from 'react';
 import {setState} from 'react';
 import weatherService from '../../repository/weatherRepository';
-
+import Header from '../Headers/header';
 
 class App extends Component {
   constructor(props) {
@@ -27,9 +27,17 @@ class App extends Component {
     };
 
     return (
-      <div style={appStyle}>
-        <Weather cities={this.state.cities} fetchData={this.loadCities} />
-      </div>
+      <Router>
+        <Header />
+        <main style={appStyle}>
+          <div className="container">
+            <Routes>
+              <Route path="/main" element={<Weather cities={this.state.cities} fetchData={this.loadCities} />} />
+              {/* Add more routes as needed */}
+            </Routes>
+          </div>
+        </main>
+      </Router>
     );
   }
 
